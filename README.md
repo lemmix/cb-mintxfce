@@ -1,2 +1,2 @@
 # cb-mintxfce
-script to "crunchbang"  Mint xfce
+script to "crunchbang" Linux  Mint xfce
