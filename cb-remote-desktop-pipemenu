@@ -1,0 +1,51 @@
+#!/bin/bash
+# ---------------------------------------------------------------------
+# Written for CrunchBang Linux <http://crunchbang.org/>
+# by Philip Newborough (aka corenominal) <corenominal@corenominal.org>
+# ---------------------------------------------------------------------
+
+if ! . cb-include.cfg 2> /dev/null; then
+    echo '  Failed to locate cb-include.cfg in PATH' >&2
+    exit 1
+fi
+
+if [[ $1 = '--viewer' ]]; then
+    terminator --title='Install VNC Viewer' --command='cb-remote-desktop-pipemenu --install-viewer'
+    
+elif [[ $1 = '--server' ]]; then
+    terminator --title='Install VNC Server' --command='cb-remote-desktop-pipemenu --install-server'
+    
+elif [[ $1 = '--install-viewer' ]]; then
+    promptInstall 'REMOTE DESKTOP CLIENT' 'TightVNC Viewer' 'xtightvncviewer'
+    
+elif [[ $1 = '--install-server' ]]; then
+    promptInstall  'REMOTE DESKTOP SERVER' 'Vino VNC server' 'vino'
+    
+else
+    # Pipemenu
+    menuStart
+
+    # Viewer
+    if [[ -x /usr/bin/xtightvncviewer ]]; then
+        menuItem 'Viewer' 'vncviewer'
+    else
+        menuItem 'Install Viewer' 'cb-remote-desktop-pipemenu --viewer'
+    fi
+
+    menuSeparator
+
+    # Server
+    if [[ -x /usr/lib/vino/vino-server ]]; then
+        if pidof -s vino-server > /dev/null; then
+            menuItem 'Stop VNC Server' 'killall vino-server'
+        else
+            menuItem 'Start VNC Server' '/usr/lib/vino/vino-server'
+        fi
+        menuItem 'VNC Server Preferences' 'vino-preferences'
+    else
+        menuItem 'Install VNC Server' 'cb-remote-desktop-pipemenu --server'
+    fi
+
+    menuEnd
+fi
+exit 0
