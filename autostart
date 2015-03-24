@@ -1,10 +1,10 @@
-# Programs that will run after Openbox has started
+# Programs that will run after Openbox has started 
 
-# Set the wallpaper
-hsetroot -fill ~/lemmi.jpg &
+# Set the wallpaper (hsetroot must be installed)
+#hsetroot -fill Path/To/Picture.jpg &
 
 # Run a Composite manager
-xcompmgr -n & #-c -t-5 -l-5 -r4.2 -o.55 &
+xcompmgr -n & #for shadows: -c -t-5 -l-5 -r4.2 -o.55 &
 
 # SCIM support (for typing non-english characters)
 #scim -d &
@@ -12,6 +12,5 @@ xcompmgr -n & #-c -t-5 -l-5 -r4.2 -o.55 &
 # A panel for good times
 tint2 &
 
-#panel planck
-
+#or use panel planck (certainly must be installed first...)
 #plank
