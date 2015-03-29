@@ -22,7 +22,7 @@ then
 echo "Install failed!" >&2
 exit 1
 else 
-echo "Install completed!" && sleep 3 
+echo "Packages installed!" && sleep 3 
 fi
 
 sudo cp cb* /usr/local/bin/ && sudo chmod +x /usr/local/bin/cb*
@@ -30,7 +30,9 @@ sudo cp cb* /usr/local/bin/ && sudo chmod +x /usr/local/bin/cb*
 if [ $? -ne 0 ]
 then
 echo "CP failed!" >&2
-exit 1
+sleep 3 && exit 1
+else 
+echo "Pipemenus copied!" && sleep 3 
 fi
 
 
@@ -50,8 +52,10 @@ if [ $? -ne 0 ]
 then
 echo "CP failed!" >&2
 exit 1
-else
-echo "Now log out and make openbox your DE and login again to apply the changes" && sleep 3
 fi
 
+sleep 3
+
+$DIALOG --title "Finished" --msgbox 'Now you crunchbanged your Xfce - Log out and choose openbox as DE' 10 30
+clear
 cb-exit && exit 0
