@@ -10,7 +10,7 @@ $DIALOG --title " crunchbang the Mint Xfce" --clear \
 
 case $? in
   0)
-    clear && sudo apt-get install -y openbox obconf obmenu tint2 xcompmgr nitrogen hsetroot;;
+    clear && sudo apt-get install -y openbox obconf obmenu tint2 xcompmgr nitrogen hsetroot volti;;
   1)
     clear && exit 1;;
   255)

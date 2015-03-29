@@ -14,3 +14,10 @@ tint2 &
 
 #or use panel planck (certainly must be installed first...)
 #plank
+
+# Sound Regler für tint2
+(sleep 3s && volti) &
+
+#start network applet
+(sleep 3s && nm-applet)
+
