@@ -7,7 +7,7 @@ read -p "Installer: Do you really want to crunchbang your xfce?(y/n):" answer
 
 case "$answer" in
         Yes|yes|Y|y|"") echo "Ok..."
-            sudo apt-get install -y openbox obconf obmenu tint2 xcompmgr nitrogen hsetroot volti;;
+            sudo apt-get install -y openbox obconf obmenu tint2 xcompmgr nitrogen hsetroot;;
         No|no|N|n) echo "Aborted."
             exit 1
             ;;
@@ -49,7 +49,6 @@ esac
 if [ $? -ne 0 ]
 then
 	echo "CP failed!" >&2
-exit 1
 fi
 
 sleep 3
