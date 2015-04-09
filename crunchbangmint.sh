@@ -57,7 +57,7 @@ read -p "Finished...! Do you want to log out now?(y/n):" answer
 
 case "$answer" in
         Yes|yes|Y|y|"") echo "Ok..."
-            openbox --exit;;
+            xfce4-session-logout --logout;;
         No|no|N|n) echo "Well you can use xfce, no problem..."
             exit 0
             ;;
